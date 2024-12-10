@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  local:
+    image: node:20
+    user: node
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    environment:
+      - NODE_AUTH_TOKEN

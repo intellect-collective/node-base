@@ -1,0 +1,7 @@
+{
+  "@intellect-collective/generator-core-package": {
+    "PackageNamespace": "intellect-collective",
+    "PackageName": "base",
+    "PackageDescription": "Base configurations"
+  }
+}

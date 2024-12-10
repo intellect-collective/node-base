@@ -1,0 +1,55 @@
+name: Test and Build
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    outputs:
+      packageVersion: ${{ steps.cpv.outputs.published-version }}
+      isNewVersion: ${{ steps.cpv.outputs.is-new-version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          cache-dependency-path: yarn.lock
+          cache: 'yarn'
+          always-auth: true
+          scope: '@intellect-collective'
+
+      - name: Restore dependencies
+        id: restore-dependencies
+        uses: actions/cache/restore@v4
+        with:
+          path: node_modules
+          key: |
+            ${{ runner.os }}-dependencies-${{ hashFiles('yarn.lock') }}
+            ${{ runner.os }}-dependencies-
+
+      - name: Install dependencies
+        if: steps.restore-dependencies.outputs.cache-hit != 'true'
+        run: |
+          cat $NPM_CONFIG_USERCONFIG
+          yarn install --immutable
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save dependencies
+        id: cache-dependencies
+        uses: actions/cache/save@v4
+        with:
+          path: node_modules
+          key: ${{ steps.restore-dependencies.outputs.cache-primary-key }}

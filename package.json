@@ -1,0 +1,33 @@
+{
+  "name": "@intellect-collective/base",
+  "description": "Base configurations",
+  "version": "1.2.0",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intellect-collective/node-base.git"
+  },
+  "bugs": {
+    "url": "https://github.com/intellect-collective/node-base/issues"
+  },
+  "homepage": "https://github.com/intellect-collective/node-base#readme",
+  "scripts": {
+    "publish-dry-run": "npm publish --dry-run",
+    "lint": "eslint .",
+    "test:unit": "NODE_ENV=test NODE_OPTIONS=--unhandled-rejections=strict node_modules/.bin/jest --forceExit",
+    "build": "rm -rf dist; tsc --project tsconfig.build.json",
+    "package": "bash .scripts/package.sh",
+    "publish-preview": "(cd dist ; npm publish --preview)",
+    "publish": "(cd dist ; npm publish)"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "yarn@4.5.3"
+}

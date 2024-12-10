@@ -1,0 +1,9 @@
+.eslintignore
+.eslintrc.js
+.github/
+.release-please-config.json
+.yo-rc.json
+init.sh
+jest.config.js
+yarn-error.log
+Makefile

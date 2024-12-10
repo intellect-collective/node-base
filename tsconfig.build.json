@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "${configDir}/test/",
+    "${configDir}/src/**/*.test.ts",
+    "${configDir}/src/**/*.test.tsx",
+    "${configDir}/src/**/*.spec.ts",
+    "${configDir}/src/**/*.spec.tsx",
+    "${configDir}/src/**/*.ispec.ts",
+    "${configDir}/src/**/*.ispec.tsx",
+    "${configDir}/src/**/*.rspec.ts",
+    "${configDir}/src/**/*.rspec.tsx",
+    "${configDir}/src/**/*.stories.ts",
+    "${configDir}/src/**/*.stories.tsx",
+    "${configDir}/storybook/**",
+    "${configDir}/styleguide/**"
+  ],
+  "compilerOptions": {
+    "sourceMap": false,
+    "sourceRoot": null
+  }
+}

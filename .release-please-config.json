@@ -1,0 +1,23 @@
+{
+  "packages": {
+    ".": {}
+  },
+  "include-v-in-tag": true,
+  "include-component-in-tag": false,
+  "versioning": "prerelease",
+  "prerelease": true,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "pull-request-header": "Automated Release PR",
+  "pull-request-title-pattern": "release: ${version}",
+  "changelog-sections": [
+    {"type":"feat","section":"Features"},
+    {"type":"fix","section":"Bug Fixes"},
+    {"type":"chore","section":"Miscellaneous"},
+    {"type":"refactor","section":"Refactors"},
+    {"type": "test","section": "Tests"},
+    {"type":"ci","section":"Continuous Integration"},
+    {"type":"docs","section":"Documentation"}
+  ],
+  "release-type": "node"
+}
